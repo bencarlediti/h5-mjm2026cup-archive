@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 - 赛事信息说明站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #fce9d8 0%, #f8d5b0 60%, #f4c48e 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            color: #3c2f1f;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 860px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .card {
+            background: #fffcf7;
+            border-radius: 32px;
+            box-shadow: 0 12px 28px rgba(160, 100, 40, 0.15);
+            padding: 2.2rem 2.5rem;
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.2s ease;
+        }
+        .card:last-child {
+            margin-bottom: 0;
+        }
+        .hero {
+            text-align: center;
+            padding: 3rem 1.5rem 2.5rem;
+            background: #fffcf7;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #b0532a;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #b45a2c, #d97b3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .sub {
+            font-size: 1.15rem;
+            color: #6f4e2e;
+            background: #f1e2d2;
+            display: inline-block;
+            padding: 0.35rem 1.4rem;
+            border-radius: 40px;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            max-width: 640px;
+            margin: 0.5rem auto 0;
+            font-size: 1rem;
+            color: #5a3f28;
+        }
+        h2 {
+            font-size: 1.65rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #9b4a23;
+            border-left: 6px solid #e2955b;
+            padding-left: 1rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #7c4e2e;
+            margin: 1.2rem 0 0.5rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .feature-item {
+            background: #fcf3e9;
+            padding: 1.2rem 1.3rem;
+            border-radius: 20px;
+            border: 1px solid #eedbc9;
+        }
+        .feature-item strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #854a27;
+            margin-bottom: 0.3rem;
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #4f3926;
+        }
+        .note-box {
+            background: #f7ede2;
+            padding: 1.2rem 1.6rem;
+            border-radius: 24px;
+            border-left: 6px solid #d9995b;
+            margin: 1.4rem 0 0.5rem;
+        }
+        .faq-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 1.3rem;
+        }
+        .faq-q {
+            font-weight: 600;
+            color: #784723;
+            margin-bottom: 0.2rem;
+        }
+        .faq-a {
+            color: #4c3825;
+            font-size: 0.98rem;
+        }
+        .faq-item {
+            border-bottom: 1px dashed #dac0ab;
+            padding-bottom: 1rem;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .btn-link {
+            display: inline-block;
+            background: #e9b787;
+            color: #3b281a;
+            padding: 0.6rem 1.6rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid #d6975b;
+            transition: 0.15s ease;
+            box-shadow: 0 2px 6px rgba(150, 80, 20, 0.08);
+        }
+        .btn-link:hover {
+            background: #dd9f67;
+            border-color: #be7d45;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(160, 90, 30, 0.18);
+        }
+        .link-context {
+            font-size: 1rem;
+            color: #3f2f1e;
+        }
+        .link-context a {
+            color: #a35428;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid #dba16d;
+            transition: 0.1s;
+        }
+        .link-context a:hover {
+            color: #6e3f1b;
+            border-bottom-color: #9a5e2e;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 2rem;
+            margin-top: 0.5rem;
+        }
+        .footer-links a {
+            color: #6b4529;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid transparent;
+        }
+        .footer-links a:hover {
+            border-bottom-color: #b07747;
+        }
+        .fine-print {
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: #74604b;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+                border-radius: 24px;
+            }
+            .hero {
+                padding: 2rem 1rem 1.8rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            h2 {
+                font-size: 1.45rem;
+            }
+            .btn-link {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- hero 区 -->
+        <div class="card hero">
+            <div class="sub">⚽ 赛事信息汇聚站</div>
+            <h1>世界杯</h1>
+            <p>围绕全球足球盛会——世界杯，整理赛事规则、历史记录、参赛队伍与赛程背景。本页面提供清晰、可靠的说明与参考信息，帮助用户快速了解世界杯相关看点。</p>
+        </div>
+
+        <!-- 优势区：站点特点 -->
+        <div class="card">
+            <h2>站点说明 · 特点与定位</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>📋 内容整理</strong>
+                    <p>基于公开赛事资料，归纳世界杯历届赛制、分组逻辑、淘汰赛规则及关键变动。</p>
+                </div>
+                <div class="feature-item">
+                    <strong>⚡ 信息清晰</strong>
+                    <p>以说明页形式呈现，不堆砌广告，聚焦赛事本身的结构与背景。</p>
+                </div>
+                <div class="feature-item">
+                    <strong>🌐 一站索引</strong>
+                    <p>将分散的世界杯知识点整合在同一页面，减少反复搜索的麻烦。</p>
+                </div>
+                <div class="feature-item">
+                    <strong>📅 持续更新</strong>
+                    <p>随每届世界杯临近，补充最新赛程、举办国、参赛名额等基础信息。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 说明区：站点介绍与可信说明 -->
+        <div class="card">
+            <h2>关于这个介绍页</h2>
+            <p>本站并非世界杯官方组织，而是一个由足球爱好者维护的赛事说明型页面。我们参考了国际足联公开规则、历届赛事报告以及多语种百科资料，梳理出世界杯的核心架构与看点。</p>
+            <p class="note-box">
+                <strong>📌 使用提示：</strong> 页面内容主要用于快速了解世界杯的基本轮廓。如需获取最准确的官方赛程、积分榜或实时新闻，建议直接访问国际足联（FIFA）官网或持权转播平台。
+            </p>
+            <p>其中，关于「世界杯」的最新动态与深度数据，你也可以通过以下链接直接进入本站的核心专题：<span class="link-context">前往 <a href="https://h5-mjm2026cup.com">世界杯</a> 信息页了解更完整的赛事框架。</span> 该页面汇总了队伍分档、历史冠军、金靴得主等整理内容。</p>
+        </div>
+
+        <!-- 更多场景 + FAQ 摘要 -->
+        <div class="card">
+            <h2>常见问题摘要</h2>
+            <div class="faq-summary">
+                <div class="faq-item">
+                    <div class="faq-q">⚽ 世界杯多久举办一次？</div>
+                    <div class="faq-a">每四年举办一届，由国际足联（FIFA）组织。最近一届为2022年卡塔尔世界杯，下一届将于2026年由美国、加拿大和墨西哥联合举办。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">🏆 有多少支球队参加决赛圈？</div>
+                    <div class="faq-a">2026年起决赛圈参赛队伍将从32支扩军至48支，小组赛阶段也会相应调整赛制。目前沿用32队赛制，分为8个小组。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">📄 本站信息可靠吗？</div>
+                    <div class="faq-a">我们在整理时已核对多源资料，但受限于个人维护，可能会出现滞后或疏漏。建议结合FIFA官方公告进行交叉验证。</div>
+                </div>
+            </div>
+            <div style="margin-top: 1.6rem;">
+                <a href="https://h5-mjm2026cup.com" class="btn-link">世界杯</a>
+            </div>
+        </div>
+
+        <!-- 底部链接区 -->
+        <div class="card" style="padding: 1.5rem 2rem;">
+            <h3 style="border-left: none; padding-left: 0; margin: 0 0 0.8rem 0; font-weight:600; color:#7b4f2d;">相关链接</h3>
+            <div class="footer-links">
+                <a href="https://h5-mjm2026cup.com">世界杯</a>
+                <a href="#">赛事规则简述</a>
+                <a href="#">历届冠军列表</a>
+                <a href="#">关于本站</a>
+            </div>
+            <div class="fine-print">
+                页面仅作信息介绍，不构成任何形式的官方发布或商业引导。
+            </div>
+        </div>
+    </div>
+</body>
+</html>
